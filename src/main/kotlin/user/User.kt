@@ -2,7 +2,6 @@ package user
 
 import launcher
 import media.EntertainmentMedia
-import media.model.ReviewData
 import utility.title
 import utility.titleAndInputValue
 
@@ -12,6 +11,7 @@ class User {
 
     companion object {
         fun userMenu() {
+            title("Menú principal")
             val option = titleAndInputValue(
                 """
                     ELIJE UNA OPCION:
@@ -21,13 +21,9 @@ class User {
             )
 
             if (option.equals("1")){
-                var list = mutableListOf<ReviewData>()
-                list.add(0, ReviewData("Jhovany", "Muy buena la recomiendo al 100%."))
-                list.add(1, ReviewData("Pedro", "Me gustó más el comienzo, después se me hizo aburrido."))
-                list.add(2, ReviewData("Juan", "Ojala tenga continuación."))
-
-                EntertainmentMedia("Soy Robot", "135 min", "Acción", "Pelicula futurista", list)
-                    .infoMedia()
+                val listMedia = EntertainmentMedia().getMediaAll()
+                EntertainmentMedia(media = listMedia)
+                    .showMediaAll()
             }
             else if (option.equals("2"))
                 launcher()

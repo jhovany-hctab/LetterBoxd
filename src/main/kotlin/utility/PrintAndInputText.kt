@@ -5,9 +5,9 @@ fun title(title: String) {
 }
 
 fun spacer() {
-    println("-----------------------------------")
-    println("-----------------------------------")
-    println("-----------------------------------")
+    println()
+    println()
+    println()
 }
 
 fun titleAndInputValue(title: String): String? {
