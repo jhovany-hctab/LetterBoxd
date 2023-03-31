@@ -50,15 +50,17 @@ open class EntertainmentMedia(
         media?.forEach {
             println("${count++} ${it.title}")
         }
-        mediaMenu()
+        title("OPCIONES")
+        titleAndInputValue("INGRESE EL NOMBRE DE LA PELÍCULA O NÚMERO PARA VER SUS DETALLES: ")?.let {
+            mediaMenu(
+                it
+            )
+        }
     }
 
 
-    fun mediaMenu() {
-        title("OPCIONES")
-        val option = titleAndInputValue("INGRESE EL NOMBRE DE LA PELÍCULA O NÚMERO PARA VER SUS DETALLES: ")
-
-        when(option?.lowercase()) {
+    val mediaMenu: (String) -> Unit = {
+        when(it?.lowercase()) {
             "1", "el padrino" -> {
                 media?.get(0)?.let { Movies(it).infoMedia() }
             }

@@ -2,6 +2,8 @@ package login
 
 import utility.title
 import utility.titleAndInputValue
+import java.text.SimpleDateFormat
+import java.util.Date
 
 class Login {
 
@@ -31,7 +33,9 @@ class Login {
             else "¡Usuario o contraseña incorrecto! VUELVA A INTENTAR"
 
         title(message)
-
+        val now = Date()
+        val formatDate = SimpleDateFormat("dd-MMMM-yyyy hh:mm:ss")
+        title("Iniciaste Sesión: ${formatDate.format(now)}")
         return status
     }
 }

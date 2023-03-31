@@ -5,9 +5,10 @@ import media.EntertainmentMedia
 import utility.title
 import utility.titleAndInputValue
 
-class User {
+class User(
+    val nameUser: String
+) {
 
-    val nameUser = "User"
 
     companion object {
         fun userMenu() {

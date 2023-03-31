@@ -61,18 +61,23 @@ class Movies(val movie: MediaData) :
     }
 
     fun downloadMovie() = runBlocking {
-        withTimeout(11_500L) {
-            repeat(100) {
-                println("Descargando ${movie.title} $it% ...")
-                delay(10L)
-                if (it == 99) {
-                    title("Guardando ${movie.title} ...")
-                    delay(1500L)
-                    title("Se guardó: ${movie.title}")
-                    delay(1000L)
-                    infoMedia()
+        try {
+            withTimeout(11_500L) {
+                repeat(100) {
+                    println("Descargando ${movie.title} $it% ...")
+                    delay(10L)
+                    if (it == 99) {
+                        title("Guardando ${movie.title} ...")
+                        delay(1500L)
+                        title("Se guardó: ${movie.title}")
+                        delay(1000L)
+                        infoMedia()
+                    }
                 }
             }
+        }catch (e: TimeoutCancellationException) {
+            title("Algo salió mal, vuelva a intentar!")
+            infoMedia()
         }
     }
 }

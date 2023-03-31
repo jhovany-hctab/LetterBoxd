@@ -6,5 +6,5 @@ fun main() {
 }
 
 fun launcher() {
-    if (Login().login()) User.userMenu() else main()
+    if (Login().login()) User.userMenu() else launcher()
 }
