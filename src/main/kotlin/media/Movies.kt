@@ -61,16 +61,18 @@ class Movies(val movie: MediaData) :
     }
 
     fun downloadMovie() = runBlocking {
-        withTimeout(10_000L) {
+        withTimeout(11_500L) {
             repeat(100) {
                 println("Descargando ${movie.title} $it% ...")
                 delay(10L)
                 if (it == 99) {
-                    title("Se descargó: ${movie.title}")
+                    title("Guardando ${movie.title} ...")
+                    delay(1500L)
+                    title("Se guardó: ${movie.title}")
+                    delay(1000L)
                     infoMedia()
                 }
             }
         }
     }
-
 }
