@@ -1,6 +1,6 @@
 package media.model
 
-class MediaData(
+data class MediaData(
     val title: String,
     val duration: String,
     val gender: String,
